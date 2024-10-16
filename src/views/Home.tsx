@@ -76,7 +76,9 @@ export default function Home({ characters }: IHomeProps) {
         </Button>
       </Box>
       <Grid container spacing={2}>
-        {filteredCharacters.map((character, index) => (
+        {filteredCharacters.map((character, index) => {
+            let imageCharacter = character.url.split('/')[5]
+            return (
           <Grow
             in={true}
             style={{ transformOrigin: '0 0 0' }}
@@ -106,7 +108,7 @@ export default function Home({ characters }: IHomeProps) {
                     <CardMedia
                       component="img"
                       height="394"
-                      image={`https://starwars-visualguide.com/assets/img/characters/${index + 1}.jpg`}
+                      image={`https://starwars-visualguide.com/assets/img/characters/${imageCharacter}.jpg`}
                       alt={character.name}
                       sx={{ borderRadius: 16 }}
                     />
@@ -132,7 +134,8 @@ export default function Home({ characters }: IHomeProps) {
               </Card>
             </Grid>
           </Grow>
-        ))}
+            )
+})}
       </Grid>
     </Box>
   );
